@@ -21,7 +21,7 @@ class Author:
 
 # classmethods
 # ==========================================================
-# retrieve anime character name
+# retrieve office character name
     @classmethod
     def getauthor(cls):
         rawauthor = requests.get('https://officeapi.dev/api/characters/random')
