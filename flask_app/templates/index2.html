@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DadJokes!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- image/title -->
+            <a class="navbar-brand" href="/random">
+                <img src="{{ url_for('static', filename='laugh_emoji.svg') }}" width="30" height="30" alt=""
+                    class='mb-1'>
+                DadJoke Clone
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--  list/hamburger hamburger menu-->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- random joke -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/random">
+                            <img src="{{ url_for('static', filename='shuffle.svg') }}" width="22" height="22" alt=""
+                                class='mb-1'>
+                            Random Joke <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <!-- search jokes -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">
+                            <img src="{{ url_for('static', filename='loupe.svg') }}" width="22" height="22" alt=""
+                                class='mb-1'>
+                            Search jokes
+                        </a>
+                    </li>
+                    <!-- suggest jokes -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/suggestion">
+                            <img src="{{ url_for('static', filename='edit.svg') }}" width="22" height="22" alt=""
+                                class='mb-1'>
+                            Suggest New Joke
+                        </a>
+                    </li>
+                </ul>
+                <p class='ml-5 text-light'>Welcome, {{ usercolor.first_name }}</p>
+            </div>
+            <a href='/settings' class='btn-secondary btn float-right mr-3'>Settings</a>
+            <a href='/login' class='btn-info btn float-right'>Login</a>
+            <a href='/logout' class='btn-warning btn float-right ml-3'>Logout</a>
+    </nav>
+
+
+
+    <div class="container p-4 mt-3 {{ usercolor.bg_color }}">
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'settingschanged' %}
+        <p class='text-success {{ settingschanged }}'>{{message}}</p>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+
+        <!-- main section -->
+        <section class='section row'>
+            <h1 class='mt-5 col'>Random dad joke: </h1>
+            <a class="btn btn-info m-5" href="/random">
+                <img src="{{ url_for('static', filename='shuffle.svg') }}" width="20" height="20" alt="" class='mb-1'>
+                Random Joke
+            </a>
+        </section>
+        <!-- main content -->
+        <section class='section'>
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ joke }}
+                    </h5>
+                    <p class="card-text">- {{ char.firstname }} {{ char.lastname }} </p>
+                </div>
+                <table class='table table-bordered'>
+                    <tr>
+                        <td><a href="http://icanhazdadjoke.com" class="text-info bg-light"><img src="{{ url_for('static', filename='link.svg') }}" width="10" height="10" alt="" class='mb-1'>  Original Website</a>
+                        </td>
+                        <td><a href="http://www.twitter.com" class="text-info"><img src="{{ url_for('static', filename='twitter.svg') }}" width="10" height="10" alt="" class='mb-1'>  Share on Twitter</a></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+
+
+
+    <!-- footer -->
+    <footer class='mt-5 p-5 bg-light row'>
+        <div class='col-1'>
+            <!-- space -->
+        </div>
+        <div class="col-3">
+            <p class="text-muted">This is a clone of icanhazdadjoke.com.</p>
+            <p class="font-italic text-muted">icanhazdadjoke.com is the largest selection of dad jokes on the internet.
+                Now supporting many different integrations to ensure you can access the dad jokes that you need wherever
+                you are. </p>
+        </div>
+        <div class='col-3'>
+            <!-- space -->
+        </div>
+        <div class="col-2">
+            <ul class="list-unstyled mb-0">
+                <li class="mb-2"><a href="/contact" class="text-muted">Contact</a></li>
+                <li class="mb-2"><a href="/about" class="text-muted">About api</a></li>
+                <li class="mb-2"><a href="/discord" class="text-muted">Discord bot</a></li>
+                <li class="mb-2"><a href="http://www.github.com/jmcroft7" class="text-muted">Github</a></li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <ul class="list-unstyled mb-0">
+                <li class="mb-2"><a href="/login" class="text-muted">Login</a></li>
+                <li class="mb-2"><a href="/login" class="text-muted">Register</a></li>
+                <li class="mb-2"><a href="/random" class="text-muted">Random joke</a></li>
+                <li class="mb-2"><a href="/search" class="text-muted">Search jokes</a></li>
+                <li class="mb-2"><a href="/suggestion" class="text-muted">Submit new joke</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- End -->
+    <!-- 
+    let response = fetch('https://animechan.vercel.app/api/random')
+        .then(response => response.json())
+        .then(quote => console.log(quote['character']))
+-->
+</body>
+
+</html>
