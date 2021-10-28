@@ -9,14 +9,11 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 
-
-
 # ========================================================
 # Login page
 @app.route('/login')
 def login():
         return render_template('login.html')
-
 
 
 # ========================================================
@@ -35,7 +32,6 @@ def register():
 # encrypts password before saving it
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     print(pw_hash)
-
     data = {
         'first_name': request.form['first_name'],
         'last_name': request.form['last_name'],
@@ -47,7 +43,6 @@ def register():
     flash('Successfully created an account!', 'success')
     session['user_id'] = new_user_id
     return redirect('/login')
-
 
 
 # ======================================================
@@ -69,7 +64,6 @@ def loginauth():
     session['user_id'] = user_in_db.id
     # never render on a post!!!
     return redirect("/")
-
 
 
 # ======================================================
@@ -105,7 +99,6 @@ def settings():
     }
     usercolor = User.user_info(data)
     return render_template('settings.html', usercolor=usercolor)
-
 
 
 # ======================================================

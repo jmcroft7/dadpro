@@ -9,8 +9,6 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 
-
-
 # class for User
 class User:
     def __init__(self, data):
@@ -22,7 +20,6 @@ class User:
         self.bg_color = data['bg_color']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-
 
 
 # staticmethods
@@ -57,7 +54,6 @@ class User:
         return is_valid
 
 
-
 # classmethods
 # ==========================================================
 # check if email already exists
@@ -71,7 +67,6 @@ class User:
         return cls(results[0])
 
 
-
 # ==========================================================
 # save registration into a user
     @classmethod
@@ -81,7 +76,6 @@ class User:
         return results
 
 
-
 # ==========================================================
 # retrieve user info
     @classmethod
@@ -89,7 +83,6 @@ class User:
         query = "SELECT * FROM users WHERE id = %(id)s"
         results = connectToMySQL('dadjoke_clone').query_db(query, data)
         return cls(results[0])
-
 
 
 # ==========================================================

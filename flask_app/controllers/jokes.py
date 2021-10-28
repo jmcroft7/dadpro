@@ -8,9 +8,6 @@ from flask_app.models.joke import Joke
 from flask_app.models.author import Author
 
 
-
-
-
 # ======================================================
 # Index route
 @app.route('/')
@@ -23,11 +20,9 @@ def index():
         joke = Joke.getquote()
         char = Author.getauthor()
         return render_template('index2.html', joke=joke, usercolor=usercolor, char=char)
-
     joke = Joke.getquote()
     char = Author.getauthor()
     return render_template('index.html', joke=joke, char=char)
-
 
 
 # ======================================================
@@ -35,7 +30,6 @@ def index():
 @app.route('/random')
 def indexRandom():
     return redirect('/')
-
 
 
 # ======================================================
@@ -53,7 +47,6 @@ def search():
     return render_template('search.html', jokes=jokes)
 
 
-
 # ======================================================
 # Search function route
 @app.route('/searchterms', methods=['POST'])
@@ -62,27 +55,24 @@ def searchTerms():
     return redirect('/searchterm')
 
 
-
 # ======================================================
 # Search by keyword route
 @app.route('/searchterm')
 def search2():
-        if "user_id" in session:
-            data = {
+    if "user_id" in session:
+        data = {
             'id': session['user_id']
         }
-            data2 = {
-                'keyword': session['keyword']
-            }
-            usercolor = User.user_info(data)
-            joke = Joke.searching(data2)
-            count = Joke.counting(data2)
-            return render_template('searchitem2.html', jokes=joke, count=count, usercolor=usercolor)
-
-        data = {
+        data2 = {
+            'keyword': session['keyword']
+        }
+        usercolor = User.user_info(data)
+        joke = Joke.searching(data2)
+        count = Joke.counting(data2)
+        return render_template('searchitem2.html', jokes=joke, count=count, usercolor=usercolor)
+    data = {
         'keyword': session['keyword']
     }
-        joke = Joke.searching(data)
-        count = Joke.counting(data)
-        return render_template('searchitem.html', jokes=joke, count=count)
-
+    joke = Joke.searching(data)
+    count = Joke.counting(data)
+    return render_template('searchitem.html', jokes=joke, count=count)

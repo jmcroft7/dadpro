@@ -4,19 +4,11 @@ from flask import flash
 import requests
 
 
-
-
-
-
-
-
-
 # class for User
 class Author:
     def __init__(self, id, contents):
         self.id = id
         self.contents = contents
-
 
 
 # classmethods

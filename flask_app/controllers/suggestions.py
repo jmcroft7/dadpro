@@ -9,10 +9,6 @@ from flask_app.models.joke import Joke
 from flask_app.models.author import Author
 
 
-
-
-
-
 # ======================================================
 # Suggestion route
 @app.route('/suggestion')
@@ -24,7 +20,6 @@ def suggestion():
             usercolor = User.user_info(data)
             return render_template('suggestions2.html', usercolor=usercolor)
         return render_template('suggestions.html')
-
 
 
 # ======================================================

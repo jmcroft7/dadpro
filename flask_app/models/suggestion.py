@@ -5,12 +5,6 @@ from flask import flash
 import requests
 
 
-
-
-
-
-
-
 class Suggestion:
     def __init__(self, data):
         self.id = data['id']
@@ -22,12 +16,10 @@ class Suggestion:
     @staticmethod
     def validate_suggestion(data):
         is_valid = True
-
         if len(request.form['textarea']) < 3 :
             flash('The textarea minimum is 3 characters!', 'textarea')
             is_valid = False
         return is_valid
-
 
 
 # ==========================================================

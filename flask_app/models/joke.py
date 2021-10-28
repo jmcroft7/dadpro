@@ -4,19 +4,11 @@ from flask import flash
 import requests
 
 
-
-
-
-
-
-
-
 # class for User
 class Joke:
     def __init__(self, id, contents):
         self.id = id
         self.contents = contents
-
 
 
 # classmethods
@@ -31,7 +23,6 @@ class Joke:
         return endjoke
 
 
-
 # ==========================================================
 # get list of jokes
     @classmethod
@@ -41,7 +32,6 @@ class Joke:
         print(list)
         endlist = list['results']
         return endlist
-
 
 
 # ==========================================================
@@ -55,7 +45,6 @@ class Joke:
         return endlist
 
 
-
 # ==========================================================
 # parse through jokes using keyword
     @classmethod
@@ -65,7 +54,6 @@ class Joke:
         print(list)
         endlist = list['results']
         return endlist
-
 
 
 # ==========================================================
