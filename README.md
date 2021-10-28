@@ -2,6 +2,7 @@
 
 DadPro is a python/flask based app that returns a random joke by a random author. It does include a search feature, login/reg, and a many to many MySQL db connection.
 
+[Video Demo](https://www.youtube.com/watch?v=gQj7_f5JEiw)
 ## Installation
 
 Download and then run the following inside the folder:
