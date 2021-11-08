@@ -18,10 +18,14 @@
 
 <p align="center">
     A python/flask based app that returns a random joke by a random author. 
+</p>
+
+<div align="center">
 
 [Video Demo](https://www.youtube.com/watch?v=gQj7_f5JEiw)
 
-</p>
+</div>
+
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
