@@ -10,7 +10,7 @@
 
  <div align="center">
    <a href="flask_app\static\demo-dadpro-1.PNG">
-    <img src="\static\demo-dadpro-1.PNG" alt="Logo" width="400" height="225">
+    <img src="flask_app\static\demo-dadpro-1.PNG" alt="Logo" width="400" height="225">
   </a>
 </div>
 
